@@ -1,0 +1,22 @@
+{
+    "id":"001",
+    "info":{
+        "name":"ネコちゃんの写真が欲しいな",
+        "reward":2000,
+        "description":"ネコちゃんの写真を一枚とって、渡してほしいな",
+        "tag":"SOLO",
+        "moti":1
+    },
+    "need_item":[
+        {
+            "name":"ネコの写真",
+            "num":1
+        }
+    ],
+    "get_item":[],
+    "time":{
+        "start":8,
+        "end":18
+    },
+    "can_receive":"1111111"
+}

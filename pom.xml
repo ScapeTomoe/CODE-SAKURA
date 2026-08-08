@@ -1,0 +1,75 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>Sakurayama_Tanteidan</groupId>
+  <artifactId>Game</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>sakurayama</name>
+  
+  <properties>
+  	<java.version>21</java.version>
+  	<gdx.version>1.12.1</gdx.version>
+  	<jackson.version>2.19.0</jackson.version>
+  </properties>
+  
+  <dependencies>
+  	<!-- LibGDX core-->
+    <dependecy>
+      <groupId>com.badlogicgames.gdx</groupId>
+      <artifactId>gdx</artifactId>
+      <version>${gdx.version}</version>
+    </dependecy>
+    
+    <!--LWJGL3 Desktop backend-->
+    <dependency>
+    	<groupId>com.badlogicgames.gdx</groupId>
+    	<artifactId>gdx-backend-lwjgl3</artifactId>
+    	<version>${gdx.version}</version>
+    </dependency>
+    
+    <!-- LibGDX native-->
+    <dependency>
+    	<groupId>com.badlogicgames.gdx</groupId>
+    	<artifactId>gdx-platform</artifactId>
+    	<version>${gdx.version}</version>
+    	<classifier>natives-desktop</classifier>
+    </dependency>
+    
+    <dependency>
+    	<groupId>com.badlogicgames.gdx</groupId>
+    	<artifactId>gdx-freetype</artifactId>
+    	<version>${gdx.version}</version>
+	</dependency>
+    <dependency>
+    <groupId>com.badlogicgames.gdx</groupId>
+    <artifactId>gdx-freetype-platform</artifactId>
+    <version>${gdx.version}</version>
+    <classifier>natives-desktop</classifier>
+</dependency>
+    <!-- Jackson JSON-->
+    <dependency>
+    	<groupId>com.fasterxml.jackson.core</groupId>
+    	<artifactId>jackson-databind</artifactId>
+    	<version>${jackson.version}</version>
+    </dependency>
+    
+    <dependency>
+    	<groupId>com.fasterxml.jackson.datatype</groupId>
+    	<artifactId>jackson-datatype-jsr310</artifactId>
+    	<version>${jackson.version}</version>
+    </dependency>
+    
+  </dependencies>
+  <build>
+  	<plugins>
+  		<!-- コンパイル設定-->
+  		<plugin>
+  			<groupId>org.apache.maven.plugins</groupId>
+  			<artifactId>maven-compiler-plugin</artifactId>
+  			<version>3.13.0</version>
+  			<configuration>
+  				<release>${java.version}</release>
+  			</configuration>
+  		</plugin>
+  	</plugins>
+  </build>
+</project>
