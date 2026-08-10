@@ -23,6 +23,7 @@ public class TitleScreen implements Screen{
 	SpriteBatch batch;
 	Music bgm;
 	Sound pi;
+	Sound pin;
 	
     public TitleScreen(MyGame game) {
         this.game = game;
@@ -44,6 +45,7 @@ public class TitleScreen implements Screen{
 		batch=new SpriteBatch();
 		Sakuramati=new Texture(Gdx.files.internal("files/素材/city.png"));
 		pi= Gdx.audio.newSound(Gdx.files.internal("files/素材/pi.wav"));
+		pin= Gdx.audio.newSound(Gdx.files.internal("files/素材/pin.mp3"));
 		bgm = Gdx.audio.newMusic(
 			    Gdx.files.internal("files/素材/title.mp3")
 				);
@@ -68,15 +70,18 @@ public class TitleScreen implements Screen{
 			}
         }
 		if (Gdx.input.isKeyJustPressed(Input.Keys.Z)) {
+			pin.play();
 			switch (select) {
 			case 0:
+				game.setScreen(game.getDemoScreen());
 				break;
 			case 1:
+				game.setScreen(game.getDemoScreen());
 				break;
 			case 2:
-				game.setScreen(new CreditScreen(game));
 				break;
 			case 3:
+				Gdx.app.exit();
 				break;
 			}
         }
@@ -113,7 +118,7 @@ public class TitleScreen implements Screen{
 
 	@Override
 	public void hide() {
-		
+		bgm.stop();
 	}
 
 	@Override
