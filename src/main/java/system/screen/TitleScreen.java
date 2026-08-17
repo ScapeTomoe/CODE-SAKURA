@@ -32,7 +32,7 @@ public class TitleScreen implements Screen{
 	@Override
 	public void show() {
 		select=0;
-		generator=new FreeTypeFontGenerator(Gdx.files.internal("files/フォント/NotoSansJP.ttf"));
+		generator=new FreeTypeFontGenerator(Gdx.files.internal("files/font/NotoSansJP.ttf"));
 		FreeTypeFontGenerator.FreeTypeFontParameter parameter =
 			    new FreeTypeFontGenerator.FreeTypeFontParameter();
 		parameter.size = 32;
@@ -43,11 +43,11 @@ public class TitleScreen implements Screen{
 		    generator.generateFont(parameter);
 		generator.dispose();
 		batch=new SpriteBatch();
-		Sakuramati=new Texture(Gdx.files.internal("files/素材/city.png"));
-		pi= Gdx.audio.newSound(Gdx.files.internal("files/素材/pi.wav"));
-		pin= Gdx.audio.newSound(Gdx.files.internal("files/素材/pin.mp3"));
+		Sakuramati=new Texture(Gdx.files.internal("files/image/background/city.png"));
+		pi= Gdx.audio.newSound(Gdx.files.internal("files/audio/se/pi.wav"));
+		pin= Gdx.audio.newSound(Gdx.files.internal("files/audio/se/pin.mp3"));
 		bgm = Gdx.audio.newMusic(
-			    Gdx.files.internal("files/素材/title.mp3")
+			    Gdx.files.internal("files/audio/bgm/title.mp3")
 				);
 		bgm.setLooping(true);
 		bgm.setVolume(0.5f);

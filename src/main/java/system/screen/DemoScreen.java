@@ -25,7 +25,7 @@ public class DemoScreen implements Screen{
 	
 	@Override
 	public void show() {
-		generator=new FreeTypeFontGenerator(Gdx.files.internal("files/フォント/NotoSansJP.ttf"));
+		generator=new FreeTypeFontGenerator(Gdx.files.internal("files/font/NotoSansJP.ttf"));
 		FreeTypeFontGenerator.FreeTypeFontParameter parameter =
 			    new FreeTypeFontGenerator.FreeTypeFontParameter();
 		parameter.size=32;
@@ -33,7 +33,7 @@ public class DemoScreen implements Screen{
 		font =generator.generateFont(parameter);
 		generator.dispose();
 		batch=new SpriteBatch();
-		pi=Gdx.audio.newSound(Gdx.files.internal("files/素材/pi.wav"));
+		pi=Gdx.audio.newSound(Gdx.files.internal("files/audio/se/pi.wav"));
 		
 	}
 

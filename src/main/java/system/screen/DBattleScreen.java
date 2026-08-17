@@ -28,7 +28,7 @@ public class DBattleScreen implements Screen{
 		this.game=game;
 		render=new ShapeRenderer();
 		batch=new SpriteBatch();
-		bgm=Gdx.audio.newMusic(Gdx.files.internal("files/素材/ch4_battle.ogg"));
+		bgm=Gdx.audio.newMusic(Gdx.files.internal("files/audio/bgm/ch4_battle.ogg"));
 		bgm.setLooping(true);
 		bgm.play();
 		//行動値を決める

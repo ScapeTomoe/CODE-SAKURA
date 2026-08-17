@@ -4,5 +4,6 @@ target/
 .settings/
 .DS_Store
 Thumbs.db
+push.bat
 *.log
 files/セーブデータ/
