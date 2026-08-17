@@ -1,0 +1,9 @@
+{
+    "id":"009",
+    "name":"タカ",
+    "HP":110,
+    "ATK":6,
+    "DEF":1,
+    "speed":105,
+    "habitat":["NORTH","EAST","SOUTH","WEST"]
+}
