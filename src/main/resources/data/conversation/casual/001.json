@@ -1,13 +1,76 @@
 {
     "id":"001",
-    "back_ground_id":"001",
+    "back_ground":"lab",
     "topic":[
         {
             "teller":"理恵",
-            "content":"和葉、kおはようございます。"
-        },{
-            "teller":"和葉",
-            "content":"あ！kお姉ちゃん。k おはよう！"
+            "emotion":"normal",
+            "type":"dialogue",
+            "content":"まったく、k和葉はほんと大変な子ですね.k.k.k",
+            "options":null,
+            "condition":null
+        },
+        {
+            "teller":"理恵",
+            "emotion":"surprised",
+            "type":"dialogue",
+            "content":"あ",
+            "options":null,
+            "condition":null
+        },
+        {
+            "teller":"理恵",
+            "emotion":"normal",
+            "type":"dialogue",
+            "content":"来客ですか？",
+            "options":null,
+            "condition":null
+        },
+        {
+            "teller":"理恵",
+            "emotion":"normal",
+            "type":"dialogue",
+            "content":"いえ、k今日は来客の予定がないと聞いていまして.k.k.k.k",
+            "options":null,
+            "condition":null
+        },
+        {
+            "teller":"理恵",
+            "emotion":"normal",
+            "type":"dialogue",
+            "content":"和葉のお友達ですか？",
+            "options":null,
+            "condition":null
+        },
+        {
+            "teller":null,
+            "emotion":null,
+            "type":"choice",
+            "content":null,
+            "options":[
+                {"id":"friend","text":"はい、和葉の友達です"},
+                { "id":"stranger", "text":"いえ、違います" },
+                { "id":"silent", "text":"……(黙っている)" }
+            ],
+            "condition":null
+        },
+        {
+            "teller":"理恵",
+            "emotion":"normal",
+            "condition":"friend",
+            "content":"そうでしたか、失礼しました。どうぞお上がりください。"
+        },
+        {
+            "teller":"理恵",
+            "emotion":"confuse",
+            "condition":"stranger",
+            "content":"……そうですか。では、どのようなご用件で？"
+        },
+        {
+            "teller":"理恵",
+            "emotion":"donbiki",
+            "condition":"silent",
+            "content":"……無言、ですか。分析が難しいですね。"
         }
     ]
 }

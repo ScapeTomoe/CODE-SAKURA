@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 
 import system.MyGame;
+import system.format.ConversationType;
 
 public class DemoScreen implements Screen{
 	private int select=0;
@@ -60,6 +61,7 @@ public class DemoScreen implements Screen{
 				game.setScreen(new DBattleScreen(game));
 				break;
 			case 2:
+				game.setScreen(new DTalkScreen(game,ConversationType.CASUAL,"001"));
 				break;
 			case 3:
 				break;
