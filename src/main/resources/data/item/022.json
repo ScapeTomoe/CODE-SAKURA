@@ -1,0 +1,1 @@
+{ "id":"022", "name":"びん", "item_type":"material", "description":"蓋つきのガラス瓶。何かを保存するのに使えそう", "attribute":{ "heal":null, "moti":null, "can_sold":true, "sold":2 } }

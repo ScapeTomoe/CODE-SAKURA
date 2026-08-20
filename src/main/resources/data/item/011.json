@@ -1,0 +1,1 @@
+{ "id":"011", "name":"エナジードリンク", "item_type":"drink", "description":"効果は保証しかねる、真っ黄色の栄養ドリンク", "attribute":{ "heal":null, "moti":35, "can_sold":true, "sold":20 } }

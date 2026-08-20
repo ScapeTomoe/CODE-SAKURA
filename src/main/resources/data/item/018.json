@@ -1,0 +1,1 @@
+{ "id":"018", "name":"ヘドロ", "item_type":"material", "description":"どろっとした正体不明の汚泥。あまり触りたくない", "attribute":{ "heal":null, "moti":null, "can_sold":true, "sold":1 } }

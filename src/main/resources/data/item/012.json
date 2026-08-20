@@ -1,0 +1,1 @@
+{ "id":"012", "name":"木の枝", "item_type":"material", "description":"森で拾える丈夫な木の枝", "attribute":{ "heal":null, "moti":null, "can_sold":true, "sold":3 } }

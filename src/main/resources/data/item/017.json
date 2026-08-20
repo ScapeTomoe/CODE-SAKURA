@@ -1,0 +1,1 @@
+{ "id":"017", "name":"歯車", "item_type":"material", "description":"何かの機械から外れたらしい小さな歯車", "attribute":{ "heal":null, "moti":null, "can_sold":true, "sold":6 } }

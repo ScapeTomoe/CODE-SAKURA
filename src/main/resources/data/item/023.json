@@ -1,0 +1,1 @@
+{ "id":"023", "name":"枯れた木", "item_type":"material", "description":"すっかり枯れてしまった木の枝", "attribute":{ "heal":null, "moti":null, "can_sold":true, "sold":2 } }

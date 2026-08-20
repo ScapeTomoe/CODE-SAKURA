@@ -1,0 +1,1 @@
+{ "id":"028", "name":"プラスチックパック", "item_type":"material", "description":"食品などが入っていた透明なプラスチックの容器", "attribute":{ "heal":null, "moti":null, "can_sold":true, "sold":1 } }

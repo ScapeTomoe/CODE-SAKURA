@@ -1,0 +1,1 @@
+{ "id":"019", "name":"塩", "item_type":"material", "description":"料理や保存に使える白い塩", "attribute":{ "heal":null, "moti":null, "can_sold":true, "sold":3 } }

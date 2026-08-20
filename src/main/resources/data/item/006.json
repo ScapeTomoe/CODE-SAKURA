@@ -1,0 +1,1 @@
+{ "id":"006", "name":"サンドウィッチ", "item_type":"food", "description":"具だくさんで食べ応えのあるサンドウィッチ", "attribute":{ "heal":40, "moti":null, "can_sold":true, "sold":25 } }

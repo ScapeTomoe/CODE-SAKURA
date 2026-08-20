@@ -1,0 +1,1 @@
+{ "id":"002", "name":"シガレット", "item_type":"food", "description":"甘くてほろ苦い、チョコ味のお菓子", "attribute":{ "heal":10, "moti":null, "can_sold":true, "sold":5 } }

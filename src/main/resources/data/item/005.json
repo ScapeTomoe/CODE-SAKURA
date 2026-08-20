@@ -1,0 +1,1 @@
+{ "id":"005", "name":"さくらもち", "item_type":"food", "description":"桜の葉の香りが上品な和菓子", "attribute":{ "heal":25, "moti":null, "can_sold":true, "sold":15 } }

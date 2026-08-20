@@ -1,0 +1,1 @@
+{ "id":"001", "name":"おにぎり", "item_type":"food", "description":"のりとごはんがあるおいしいおにぎり", "attribute":{ "heal":20, "moti":null, "can_sold":true, "sold":10 } }

@@ -1,0 +1,1 @@
+{ "id":"008", "name":"お茶", "item_type":"drink", "description":"ほっと一息つける緑茶", "attribute":{ "heal":null, "moti":10, "can_sold":true, "sold":8 } }

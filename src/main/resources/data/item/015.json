@@ -1,0 +1,1 @@
+{ "id":"015", "name":"マッチの箱", "item_type":"material", "description":"数本のマッチが入った小さな箱", "attribute":{ "heal":null, "moti":null, "can_sold":true, "sold":4 } }

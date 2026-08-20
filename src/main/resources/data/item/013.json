@@ -1,0 +1,1 @@
+{ "id":"013", "name":"貝殻", "item_type":"material", "description":"桜山海岸で拾える綺麗な貝殻", "attribute":{ "heal":null, "moti":null, "can_sold":true, "sold":3 } }

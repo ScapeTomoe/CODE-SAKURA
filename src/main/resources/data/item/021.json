@@ -1,0 +1,1 @@
+{ "id":"021", "name":"からのボトル", "item_type":"material", "description":"中身が空になったペットボトル", "attribute":{ "heal":null, "moti":null, "can_sold":true, "sold":1 } }

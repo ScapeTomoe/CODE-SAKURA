@@ -1,0 +1,1 @@
+{ "id":"004", "name":"パン", "item_type":"food", "description":"ふっくら焼きたての食パン", "attribute":{ "heal":25, "moti":null, "can_sold":true, "sold":12 } }

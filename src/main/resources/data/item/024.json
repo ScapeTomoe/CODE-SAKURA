@@ -1,0 +1,1 @@
+{ "id":"024", "name":"鉛筆", "item_type":"material", "description":"使いかけの鉛筆。まだ書ける", "attribute":{ "heal":null, "moti":null, "can_sold":true, "sold":2 } }

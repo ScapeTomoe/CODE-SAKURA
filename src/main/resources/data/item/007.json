@@ -1,0 +1,1 @@
+{ "id":"007", "name":"コーラ", "item_type":"drink", "description":"シュワッと爽快な炭酸飲料", "attribute":{ "heal":null, "moti":15, "can_sold":true, "sold":10 } }

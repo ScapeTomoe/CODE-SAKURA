@@ -1,0 +1,1 @@
+{ "id":"003", "name":"チョコ", "item_type":"food", "description":"一口サイズの板チョコ。小腹満たしにちょうどいい", "attribute":{ "heal":15, "moti":null, "can_sold":true, "sold":8 } }

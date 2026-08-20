@@ -1,0 +1,1 @@
+{ "id":"009", "name":"スポドリ", "item_type":"drink", "description":"汗をかいた後に染み渡るスポーツドリンク", "attribute":{ "heal":null, "moti":25, "can_sold":true, "sold":15 } }
