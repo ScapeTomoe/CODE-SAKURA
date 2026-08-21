@@ -30,7 +30,6 @@ public class DTalkScreen implements Screen{
 	private Conversation conversation;
 	private ShapeRenderer render;
 	private SpriteBatch batch;
-	private ConversationType type;
 	private Texture background,rie;
 	private float clickDelta;
 	private boolean flag;
@@ -41,7 +40,6 @@ public class DTalkScreen implements Screen{
 	private Map<String,Texture> rie_Texture=new HashMap<>();
 	public DTalkScreen(MyGame game,ConversationType type,String id) {
 		this.game=game;
-		this.type=type;
 		this.conversation=new Conversation(id,type.toDirectoryName());
 		rie_Texture.put("normal",new Texture(Gdx.files.internal("image/character/rie/normal.png")));
 		rie_Texture.put("anger",new Texture(Gdx.files.internal("image/character/rie/anger.png")));
@@ -106,7 +104,8 @@ public class DTalkScreen implements Screen{
 		    }
 		}
 		if(nowTopic.condition()==null) {
-			text=(nowTopic.content()==null ? "空テキスト":nowTopic.content());
+			text=(nowTopic.content()==null ? "空テキスト":conversation.getNowText());
+			conversation.nextIndex(delta);
 		}else {
 			while(nowTopic.condition()!=null &&
 			        !nowTopic.condition().equals(condition) &&
@@ -114,7 +113,8 @@ public class DTalkScreen implements Screen{
 				conversation.slide();
 				nowTopic=conversation.getData().topic().get(conversation.getIndex());
 			}
-			text=(nowTopic.content()==null ? "空テキスト":nowTopic.content());
+			text=(nowTopic.content()==null ? "空テキスト":conversation.getNowText());
+			conversation.nextIndex(delta);
 		}
 		if("choice".equals(nowTopic.type())) {
 			for(Option op:nowTopic.options()) {
