@@ -79,6 +79,7 @@ public class TitleScreen implements Screen{
 				game.setScreen(game.getDemoScreen());
 				break;
 			case 2:
+				game.setScreen(game.getDMapScreen());
 				break;
 			case 3:
 				Gdx.app.exit();

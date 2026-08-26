@@ -1,5 +1,7 @@
 target/
 SampleCode/
+application/
+tool/
 .classpath
 .project
 .settings/

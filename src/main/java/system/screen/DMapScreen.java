@@ -13,32 +13,38 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-
 import system.MyGame;
 
-public class DMapScreen implements Screen{
-	
-	private MyGame game;
-	
-	 private TiledMap map;
-	 private OrthogonalTiledMapRenderer mapRenderer;
-	 private OrthographicCamera camera;
-	 private Viewport viewport;
-	 
-	 private float playerX = 100f;
-	 private float playerY = 100f;
-	 
-	private Array<RectangleMapObject> warpPoints;
-	
-	private RectangleMapObject lastOverlapped;
-	private static final float PLAYER_SIZE = 32f;
-	public DMapScreen(MyGame game,String mapID) {
-		camera = new OrthographicCamera();
-        viewport = new FitViewport(960, 720, camera); // マップ表示領域を960x720と仮定
-        loadMap("resources/data/map/demo.tmx",0f,0f);
-	}
-	
-	private void loadMap(String tmxPath, float spawnX, float spawnY) {
+public class DMapScreen implements Screen {
+
+    private MyGame game;
+
+    private TiledMap map;
+    private OrthogonalTiledMapRenderer mapRenderer;
+    private OrthographicCamera camera;
+    private Viewport viewport;
+
+    private float playerX = 100f;
+    private float playerY = 100f;
+
+    // TMXマップの全体サイズ (30タイル * 32px = 960, 20タイル * 32px = 640)
+    private static final float V_WIDTH = 960f;
+    private static final float V_HEIGHT = 640f;
+
+    private Array<RectangleMapObject> warpPoints;
+    private RectangleMapObject lastOverlapped;
+    private static final float PLAYER_SIZE = 32f;
+
+    public DMapScreen(MyGame game, String mapID) {
+        this.game = game;
+
+        camera = new OrthographicCamera();
+        viewport = new FitViewport(V_WIDTH, V_HEIGHT, camera);
+
+        loadMap("data/map/tmx/demo.tmx", 100f, 100f);
+    }
+
+    private void loadMap(String tmxPath, float spawnX, float spawnY) {
         if (map != null) {
             map.dispose();
         }
@@ -54,13 +60,10 @@ public class DMapScreen implements Screen{
 
         playerX = spawnX;
         playerY = spawnY;
-        lastOverlapped = null; // マップ切替直後は重なり判定をリセット
-
-        camera.position.set(playerX, playerY, 0);
-        camera.update();
+        lastOverlapped = null;
     }
-	
-	private void checkWarp() {
+
+    private void checkWarp() {
         Rectangle playerRect = new Rectangle(playerX, playerY, PLAYER_SIZE, PLAYER_SIZE);
 
         RectangleMapObject currentOverlap = null;
@@ -71,19 +74,22 @@ public class DMapScreen implements Screen{
             }
         }
 
-        // 「前フレームは重なっていなかったが、今フレームで重なった」タイミングのみ発火
         if (currentOverlap != null && currentOverlap != lastOverlapped) {
             String targetMap = currentOverlap.getProperties().get("targetMap", String.class);
-            float targetX = currentOverlap.getProperties().get("targetX", Float.class);
-            float targetY = currentOverlap.getProperties().get("targetY", Float.class);
+
+            Object xObj = currentOverlap.getProperties().get("targetX");
+            Object yObj = currentOverlap.getProperties().get("targetY");
+            float targetX = xObj instanceof Number ? ((Number) xObj).floatValue() : Float.parseFloat(xObj.toString());
+            float targetY = yObj instanceof Number ? ((Number) yObj).floatValue() : Float.parseFloat(yObj.toString());
+
             loadMap(targetMap, targetX, targetY);
-            return; // loadMap内でlastOverlappedはnullにリセット済み
+            return;
         }
 
         lastOverlapped = currentOverlap;
     }
-	
-	private void loadWarpPoints() {
+
+    private void loadWarpPoints() {
         MapLayer warpLayer = map.getLayers().get("warp");
         if (warpLayer != null) {
             warpPoints = warpLayer.getObjects().getByType(RectangleMapObject.class);
@@ -91,58 +97,53 @@ public class DMapScreen implements Screen{
             warpPoints = new Array<>();
         }
     }
-	
-	@Override
-	public void show() {
-		// TODO 自動生成されたメソッド・スタブ
-		
-	}
 
-	@Override
-	public void render(float delta) {
-		Gdx.gl.glClearColor(0, 0, 0, 1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+    @Override
+    public void show() {
+        // 画面が表示された瞬間に、現在のウィンドウサイズでViewportを強制更新する
+        viewport.update(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), true);
+    }
+    @Override
+public void render(float delta) {
+    // 初回表示タイミングのズレ（起動直後の黒画面）を防ぐため、毎フレーム実サイズへ同期する
+    viewport.update(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), false);
 
-        // ここでプレイヤー移動入力処理を行い playerX, playerY を更新する想定
-        // handleInput(delta);
+    Gdx.gl.glClearColor(0, 0, 0, 1);
+    Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        checkWarp();
+    checkWarp();
 
-        camera.position.set(playerX, playerY, 0);
-        camera.update();
-        mapRenderer.setView(camera);
-        mapRenderer.render();
+    // 黒帯（左側の余白）のピクセル幅を取得し、ワールド座標系に変換
+    float leftGutterPx = viewport.getLeftGutterWidth();
+    float worldPerPixel = V_WIDTH / viewport.getScreenWidth();
+    float offsetX = leftGutterPx * worldPerPixel;
 
-	}
+    // カメラの位置を中心(V_WIDTH/2)から左の余白分だけ右に移動させることで、
+    // マップの左端(x=0)が画面の左端にぴったり合います
+    camera.position.set(V_WIDTH / 2f, V_HEIGHT / 2f, 0);
+    camera.update();
 
-	@Override
-	public void resize(int width, int height) {
-		// TODO 自動生成されたメソッド・スタブ
-		viewport.update(width, height);
-	}
+    mapRenderer.setView(camera);
+    mapRenderer.render();
+}
 
-	@Override
-	public void pause() {
-		// TODO 自動生成されたメソッド・スタブ
-		
-	}
+    @Override
+    public void resize(int width, int height) {
+        viewport.update(width, height, true);
+    }
 
-	@Override
-	public void resume() {
-		// TODO 自動生成されたメソッド・スタブ
-		
-	}
+    @Override
+    public void pause() {}
 
-	@Override
-	public void hide() {
-		// TODO 自動生成されたメソッド・スタブ
-		
-	}
+    @Override
+    public void resume() {}
 
-	@Override
-	public void dispose() {
-		map.dispose();
-        mapRenderer.dispose();
-	}
+    @Override
+    public void hide() {}
 
+    @Override
+    public void dispose() {
+        if (map != null) map.dispose();
+        if (mapRenderer != null) mapRenderer.dispose();
+    }
 }

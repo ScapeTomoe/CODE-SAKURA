@@ -9,6 +9,7 @@ public class Main {
 	            new Lwjgl3ApplicationConfiguration();
 		config.setWindowedMode(1280,720);
 		config.setTitle("CODE:SAKURA");
+		config.setWindowIcon("sakura_icon.png");
 		config.setForegroundFPS(30);
 	    new Lwjgl3Application( new MyGame(),
 	            config
