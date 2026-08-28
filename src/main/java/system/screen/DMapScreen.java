@@ -222,7 +222,7 @@ public class DMapScreen implements Screen {
 		// マップの左端(x=0)が画面の左端にぴったり合います
 		camera.position.set(V_WIDTH / 2f, V_HEIGHT / 2f, 0);
 		camera.update();
-
+		batch.setProjectionMatrix(camera.combined);
 		mapRenderer.setView(camera);
 		mapRenderer.render();
 		//スカーレット
